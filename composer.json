@@ -1,0 +1,33 @@
+{
+    "name": "contensio/plugin-social-connect",
+    "description": "Social sign-in for Contensio — Google, GitHub, Facebook, Microsoft.",
+    "type": "library",
+    "license": "AGPL-3.0-or-later",
+    "keywords": ["contensio", "plugin", "social-login", "oauth", "google", "github", "facebook", "microsoft"],
+    "homepage": "https://contensio.com",
+    "authors": [
+        {
+            "name": "Iosif Gabriel Chimilevschi",
+            "homepage": "https://contensio.com",
+            "role": "Creator"
+        }
+    ],
+    "require": {
+        "php": "^8.2",
+        "contensio/contensio": "^0.1@rc",
+        "laravel/socialite": "^5.21"
+    },
+    "autoload": {
+        "psr-4": {
+            "Contensio\\SocialConnect\\": "src/"
+        }
+    },
+    "extra": {
+        "cms": {
+            "type": "plugin",
+            "provider": "Contensio\\SocialConnect\\SocialConnectServiceProvider"
+        }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}

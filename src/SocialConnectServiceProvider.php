@@ -11,7 +11,7 @@
 
 namespace Contensio\SocialConnect;
 
-use Contensio\Cms\Support\Hook;
+use Contensio\Support\Hook;
 use Contensio\SocialConnect\Support\Providers;
 use Illuminate\Support\ServiceProvider;
 

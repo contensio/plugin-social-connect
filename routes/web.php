@@ -28,8 +28,8 @@ Route::middleware(['web', 'auth'])->group(function () {
 });
 
 // Admin settings page — lives under the configured admin prefix
-Route::prefix(config('cms.route_prefix', 'admin'))
-    ->middleware(['web', 'cms.auth', 'cms.admin'])
+Route::prefix(config('contensio.route_prefix', 'admin'))
+    ->middleware(['web', 'contensio.auth', 'contensio.admin'])
     ->group(function () {
         Route::get('/settings/social-connect',  [SettingsController::class, 'index'])
             ->name('socialconnect.settings');

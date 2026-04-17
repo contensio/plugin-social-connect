@@ -38,7 +38,7 @@ class ConnectController extends Controller
     public function redirect(Request $request, string $provider)
     {
         if (! $this->isAvailable($provider)) {
-            return redirect()->route('cms.login')->withErrors([
+            return redirect()->route('contensio.login')->withErrors([
                 'social' => 'This sign-in provider is not available right now.',
             ]);
         }
@@ -59,7 +59,7 @@ class ConnectController extends Controller
     public function callback(Request $request, string $provider)
     {
         if (! $this->isAvailable($provider)) {
-            return redirect()->route('cms.login')->withErrors([
+            return redirect()->route('contensio.login')->withErrors([
                 'social' => 'This sign-in provider is not available.',
             ]);
         }
@@ -67,12 +67,12 @@ class ConnectController extends Controller
         try {
             $socialUser = Socialite::driver($provider)->user();
         } catch (InvalidStateException) {
-            return redirect()->route('cms.login')->withErrors([
+            return redirect()->route('contensio.login')->withErrors([
                 'social' => 'Sign-in could not be completed. Please try again.',
             ]);
         } catch (\Throwable $e) {
             report($e);
-            return redirect()->route('cms.login')->withErrors([
+            return redirect()->route('contensio.login')->withErrors([
                 'social' => 'Sign-in failed: ' . $e->getMessage(),
             ]);
         }
@@ -92,19 +92,19 @@ class ConnectController extends Controller
         if ($connectUserId) {
             $user = User::find($connectUserId);
             if (! $user) {
-                return redirect()->route('cms.login')
+                return redirect()->route('contensio.login')
                     ->withErrors(['social' => 'Session expired. Please try again.']);
             }
 
             if ($link && (int) $link->user_id !== (int) $user->id) {
-                return redirect()->route('cms.admin.profile')->withErrors([
+                return redirect()->route('contensio.account.profile')->withErrors([
                     'social' => "This {$provider} account is already linked to a different user.",
                 ]);
             }
 
             $this->upsertLink($user, $provider, $providerUserId, $email, $name, $avatar);
 
-            return redirect()->route('cms.admin.profile')
+            return redirect()->route('contensio.account.profile')
                 ->with('success', ucfirst($provider) . ' account linked.');
         }
 
@@ -135,14 +135,14 @@ class ConnectController extends Controller
     {
         $user = Auth::user();
         if (! $user) {
-            return redirect()->route('cms.login');
+            return redirect()->route('contensio.login');
         }
 
         SocialLogin::where('user_id', $user->id)
             ->where('provider', $provider)
             ->delete();
 
-        return redirect()->route('cms.admin.profile')
+        return redirect()->route('contensio.account.profile')
             ->with('success', ucfirst($provider) . ' account unlinked.');
     }
 
@@ -188,14 +188,16 @@ class ConnectController extends Controller
         Auth::login($user, true);
         request()->session()->regenerate();
 
+        do_action('contensio/user/login', $user);
+
         if ($user->canAccessAdmin()) {
-            return redirect()->intended(route('cms.admin.dashboard'));
+            return redirect()->intended(route('contensio.account.dashboard'));
         }
-        return redirect()->intended(route('cms.home'));
+        return redirect()->intended(route('contensio.home'));
     }
 
     protected function reject(string $message)
     {
-        return redirect()->route('cms.login')->withErrors(['social' => $message]);
+        return redirect()->route('contensio.login')->withErrors(['social' => $message]);
     }
 }

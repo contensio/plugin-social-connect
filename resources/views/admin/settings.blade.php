@@ -4,12 +4,12 @@
  | https://contensio.com
 --}}
 
-@extends('cms::admin.layout')
+@extends('contensio::admin.layout')
 
 @section('title', 'Social Connect')
 
 @section('breadcrumb')
-<a href="{{ route('cms.admin.settings.index') }}" class="text-gray-400 hover:text-gray-700">Configuration</a>
+<a href="{{ route('contensio.account.settings.index') }}" class="text-gray-400 hover:text-gray-700">Configuration</a>
 <span class="mx-2 text-gray-300">/</span>
 <span class="font-medium text-gray-700">Social Connect</span>
 @endsection

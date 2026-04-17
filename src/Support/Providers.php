@@ -11,7 +11,7 @@
 
 namespace Contensio\SocialConnect\Support;
 
-use Contensio\Cms\Models\Setting;
+use Contensio\Models\Setting;
 
 /**
  * Provider catalog + settings storage for Social Connect.

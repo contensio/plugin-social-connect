@@ -1,10 +1,10 @@
 {
     "name": "contensio/plugin-social-connect",
     "label": "Social Connect",
-    "description": "Let users sign in with their Google, GitHub, Facebook, or Microsoft account — no new password to remember.",
+    "description": "Let users sign in with their Google, GitHub, Facebook, or Microsoft account - no new password to remember.",
     "author": "Contensio",
     "author_url": "https://contensio.com",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "provider": "Contensio\\SocialConnect\\SocialConnectServiceProvider",
     "autoload": {
         "psr-4": {
@@ -18,7 +18,7 @@
         "placement": "tools",
         "label": "Social Connect",
         "icon": "bi-link-45deg",
-        "route": "socialconnect.settings",
+        "route": "contensio-social-connect.settings",
         "permission": "plugins.configure"
     },
     "removable": true

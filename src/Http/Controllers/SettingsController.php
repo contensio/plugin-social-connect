@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Social Connect — Contensio plugin.
+ * Social Connect - Contensio plugin.
  * Sign in with Google, GitHub, Facebook, or Microsoft.
  * https://contensio.com
  *
@@ -16,7 +16,7 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 
 /**
- * Admin settings page for Social Connect — /admin/settings/social-connect.
+ * Admin settings page for Social Connect - /admin/settings/social-connect.
  */
 class SettingsController extends Controller
 {
@@ -30,7 +30,7 @@ class SettingsController extends Controller
             ]);
         }
 
-        return view('social-connect::admin.settings', compact('providers'));
+        return view('contensio-social-connect::admin.settings', compact('providers'));
     }
 
     public function save(Request $request)
@@ -44,7 +44,7 @@ class SettingsController extends Controller
         }
 
         return redirect()
-            ->route('socialconnect.settings')
+            ->route('contensio-social-connect.settings')
             ->with('success', 'Social Connect settings saved.');
     }
 }

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Social Connect — Contensio plugin.
+ * Social Connect - Contensio plugin.
  * Sign in with Google, GitHub, Facebook, or Microsoft.
  * https://contensio.com
  *

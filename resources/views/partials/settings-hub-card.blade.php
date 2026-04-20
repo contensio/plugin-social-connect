@@ -3,7 +3,7 @@
     Renders the Social Connect tile on the Configuration page.
 --}}
 
-<a href="{{ route('socialconnect.settings') }}"
+<a href="{{ route('contensio-social-connect.settings') }}"
    class="group bg-white rounded-xl border border-gray-200 p-5 hover:border-blue-300 hover:shadow-sm transition-all">
     <div class="flex items-start gap-4">
         <div class="w-10 h-10 rounded-xl bg-rose-50 flex items-center justify-center shrink-0 group-hover:bg-rose-100 transition-colors">

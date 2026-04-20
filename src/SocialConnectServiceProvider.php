@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Social Connect — Contensio plugin.
+ * Social Connect - Contensio plugin.
  * Sign in with Google, GitHub, Facebook, or Microsoft.
  * https://contensio.com
  *
@@ -29,19 +29,21 @@ use Illuminate\Support\ServiceProvider;
  *        - settings.hub_cards   → Social Connect tile on /admin/settings
  *
  * Because this all runs from boot(), toggling the plugin off in admin
- * removes all of it on the next request — no lingering effects.
+ * removes all of it on the next request - no lingering effects.
  */
 class SocialConnectServiceProvider extends ServiceProvider
 {
+    protected string $ns = 'contensio-social-connect';
+
     public function boot(): void
     {
-        // Views accessed as `social-connect::admin.settings`, `social-connect::partials.login-buttons`, etc.
-        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'social-connect');
+        // Views accessed as `contensio-social-connect::admin.settings`, `contensio-social-connect::partials.login-buttons`, etc.
+        $this->loadViewsFrom(__DIR__ . '/../resources/views', $this->ns);
 
         // Routes (public OAuth flow + authenticated unlink + admin settings)
         $this->loadRoutesFrom(__DIR__ . '/../routes/web.php');
 
-        // Migrations — run automatically on plugin enable (PluginController)
+        // Migrations - run automatically on plugin enable (PluginController)
         // or manually via `php artisan migrate`
         $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
 
@@ -61,7 +63,7 @@ class SocialConnectServiceProvider extends ServiceProvider
             if (empty($providers)) {
                 return '';
             }
-            return view('social-connect::partials.login-buttons', [
+            return view($this->ns . '::partials.login-buttons', [
                 'providers' => $providers,
             ])->render();
         });
@@ -70,13 +72,13 @@ class SocialConnectServiceProvider extends ServiceProvider
             if (! $user) {
                 return '';
             }
-            return view('social-connect::partials.profile-linked-accounts', [
+            return view($this->ns . '::partials.profile-linked-accounts', [
                 'user' => $user,
             ])->render();
         });
 
         Hook::add('settings.hub_cards', function () {
-            return view('social-connect::partials.settings-hub-card')->render();
+            return view($this->ns . '::partials.settings-hub-card')->render();
         });
     }
 }

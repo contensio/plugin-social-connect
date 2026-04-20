@@ -17,7 +17,7 @@
 
 <div class="space-y-2">
     @foreach($providers as $provider => $meta)
-    <a href="{{ route('socialconnect.redirect', $provider) }}"
+    <a href="{{ route('contensio-social-connect.redirect', $provider) }}"
        class="w-full flex items-center justify-center gap-2.5 border border-gray-200 hover:bg-gray-50 text-gray-700 font-medium text-sm py-2.5 rounded-lg transition-colors">
         <i class="bi {{ $meta['icon'] }} text-base leading-none" style="color: {{ $meta['color'] }}"></i>
         <span>Continue with {{ $meta['label'] }}</span>

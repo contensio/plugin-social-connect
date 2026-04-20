@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Social Connect — Contensio plugin.
+ * Social Connect - Contensio plugin.
  * Sign in with Google, GitHub, Facebook, or Microsoft.
  * https://contensio.com
  *
@@ -24,11 +24,11 @@ use Laravel\Socialite\Two\InvalidStateException;
  * OAuth redirect / callback / unlink handler.
  *
  * Flows supported:
- *   1. Anonymous sign-in — visitor hits /login/{provider}, OAuth flow runs,
+ *   1. Anonymous sign-in - visitor hits /login/{provider}, OAuth flow runs,
  *      we match an existing user by email and log them in.
- *   2. Profile-link — already-logged-in user hits /login/{provider}?connect=1,
+ *   2. Profile-link - already-logged-in user hits /login/{provider}?connect=1,
  *      comes back, we attach the social identity to their current account.
- *   3. Unlink — POST to /account/social/{provider}/unlink removes the link.
+ *   3. Unlink - POST to /account/social/{provider}/unlink removes the link.
  *
  * Contensio is admin-managed: we do NOT auto-register users via social login.
  * Unknown emails are rejected with a clear error pointing to the admin.
@@ -108,7 +108,7 @@ class ConnectController extends Controller
                 ->with('success', ucfirst($provider) . ' account linked.');
         }
 
-        // --- Flow 2: known link — sign in ---
+        // --- Flow 2: known link - sign in ---
         if ($link) {
             $user = User::find($link->user_id);
             if (! $user) {
@@ -118,7 +118,7 @@ class ConnectController extends Controller
             return $this->signIn($user, $provider, $providerUserId, $email, $name, $avatar);
         }
 
-        // --- Flow 3: no link yet — match by email ---
+        // --- Flow 3: no link yet - match by email ---
         if (! $email) {
             return $this->reject("{$provider} didn't share an email address with us. Ask your administrator to create your account manually.");
         }
@@ -176,7 +176,7 @@ class ConnectController extends Controller
 
         $this->upsertLink($user, $provider, $providerUserId, $email, $name, $avatar);
 
-        // Respect 2FA — social auth shouldn't bypass the challenge.
+        // Respect 2FA - social auth shouldn't bypass the challenge.
         if (! is_null($user->two_factor_secret) && ! is_null($user->two_factor_confirmed_at)) {
             request()->session()->put([
                 'login.id'       => $user->getAuthIdentifier(),

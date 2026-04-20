@@ -1,4 +1,4 @@
-# Social Connect — Contensio plugin
+# Social Connect - Contensio plugin
 
 <p>
   <a href="https://packagist.org/packages/contensio/plugin-social-connect"><img src="https://img.shields.io/packagist/v/contensio/plugin-social-connect?include_prereleases&label=packagist" alt="Latest Version"></a>
@@ -11,7 +11,7 @@ Sign in to Contensio with Google, GitHub, Facebook, or Microsoft accounts.
 
 ## Install
 
-### Option A — Composer (developers)
+### Option A - Composer (developers)
 
 ```bash
 composer require contensio/plugin-social-connect
@@ -19,7 +19,7 @@ composer require contensio/plugin-social-connect
 
 Then in the Contensio admin: **Plugins → Enable** next to "Social Connect". Migrations run automatically on enable.
 
-### Option B — ZIP upload (non-technical users)
+### Option B - ZIP upload (non-technical users)
 
 1. Download the latest release ZIP from [github.com/contensio/plugin-social-connect/releases](https://github.com/contensio/plugin-social-connect/releases)
 2. In Contensio admin: **Plugins → Install Plugin** → upload the ZIP
@@ -51,7 +51,7 @@ After enabling the plugin:
 ## How it works
 
 - **Sign-in only for existing users.** Social Connect does not auto-register new Contensio users. If the provider's email doesn't match an existing Contensio account, sign-in is rejected with a friendly error. Administrators create users in **Users → Add User** first.
-- **Email matching.** When a user signs in with Google for the first time, Contensio looks up their email in the `users` table. If it matches an existing active account, the social identity is linked automatically — subsequent sign-ins go straight through.
+- **Email matching.** When a user signs in with Google for the first time, Contensio looks up their email in the `users` table. If it matches an existing active account, the social identity is linked automatically - subsequent sign-ins go straight through.
 - **2FA still applies.** Users with 2FA enabled are still challenged for a code after social sign-in. Social Connect is not a 2FA bypass.
 - **Disabled accounts (`is_active = false`) are rejected.**
 
@@ -73,7 +73,7 @@ Social Connect ships with:
 - Login-page provider buttons
 - Profile-page "Linked accounts" card
 
-All of the above is injected via Contensio's Hook system — zero modifications to core files.
+All of the above is injected via Contensio's Hook system - zero modifications to core files.
 
 ## License
 

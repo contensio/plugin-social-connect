@@ -1,5 +1,5 @@
 {{--
- | Social Connect — admin settings page.
+ | Social Connect - admin settings page.
  | Rendered under the CMS admin layout.
  | https://contensio.com
 --}}
@@ -19,7 +19,7 @@
 <div class="max-w-3xl mx-auto">
 
     <h1 class="text-xl font-bold text-gray-900 mb-1">Social Connect</h1>
-    <p class="text-sm text-gray-500 mb-5">Let users sign in with their Google, GitHub, Facebook, or Microsoft accounts — no new password to remember.</p>
+    <p class="text-sm text-gray-500 mb-5">Let users sign in with their Google, GitHub, Facebook, or Microsoft accounts - no new password to remember.</p>
 
     @if(session('success'))
     <div class="mb-5 flex items-center gap-3 bg-green-50 border border-green-200 text-green-800 rounded-lg px-4 py-3 text-sm">
@@ -33,13 +33,13 @@
     <div class="mb-5 bg-blue-50 border border-blue-200 rounded-lg p-4 text-sm">
         <p class="text-blue-900 font-medium mb-1">How Social Connect works</p>
         <ul class="text-blue-800/90 text-xs space-y-1 leading-relaxed">
-            <li>• Users must already exist in Contensio. Social sign-in <strong>links</strong> an existing account — it doesn't register new users.</li>
+            <li>• Users must already exist in Contensio. Social sign-in <strong>links</strong> an existing account - it doesn't register new users.</li>
             <li>• Matching is by <strong>email address</strong>. If Google's email matches a Contensio user, the link is created automatically.</li>
             <li>• Users with 2FA enabled are still challenged after social sign-in.</li>
         </ul>
     </div>
 
-    <form method="POST" action="{{ route('socialconnect.settings.save') }}">
+    <form method="POST" action="{{ route('contensio-social-connect.settings.save') }}">
         @csrf
 
         <div class="space-y-4">

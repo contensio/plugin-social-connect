@@ -37,14 +37,14 @@
                 @endif
             </div>
             @if($row)
-                <form method="POST" action="{{ route('socialconnect.unlink', $key) }}">
+                <form method="POST" action="{{ route('contensio-social-connect.unlink', $key) }}">
                     @csrf
                     <button type="submit" class="text-xs font-medium text-red-600 hover:text-red-700 px-3 py-1.5">
                         Unlink
                     </button>
                 </form>
             @else
-                <a href="{{ route('socialconnect.redirect', [$key, 'connect' => 1]) }}"
+                <a href="{{ route('contensio-social-connect.redirect', [$key, 'connect' => 1]) }}"
                    class="text-xs font-medium text-blue-600 hover:text-blue-700 px-3 py-1.5">
                     Connect
                 </a>

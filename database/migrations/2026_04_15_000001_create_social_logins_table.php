@@ -8,11 +8,11 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('social_logins', function (Blueprint $table) {
+        Schema::create('contensio_social_logins', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->string('provider', 30);           // google, github, facebook, microsoft
-            $table->string('provider_user_id');        // the provider's user id — stable across sessions
+            $table->string('provider_user_id');        // the provider's user id - stable across sessions
             $table->string('email', 255)->nullable();  // provider's email at time of link (for audit)
             $table->string('name', 255)->nullable();   // provider's displayed name
             $table->string('avatar', 500)->nullable(); // provider's avatar URL (best-effort)
@@ -26,6 +26,6 @@ return new class extends Migration
 
     public function down(): void
     {
-        Schema::dropIfExists('social_logins');
+        Schema::dropIfExists('contensio_social_logins');
     }
 };

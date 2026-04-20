@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Social Connect — Contensio plugin.
+ * Social Connect - Contensio plugin.
  * Sign in with Google, GitHub, Facebook, or Microsoft.
  * https://contensio.com
  *
@@ -16,6 +16,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class SocialLogin extends Model
 {
+    protected $table = 'contensio_social_logins';
+
     public $timestamps = false;
 
     protected $guarded = [];
